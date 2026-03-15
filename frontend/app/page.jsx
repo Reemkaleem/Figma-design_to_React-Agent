@@ -16,6 +16,9 @@ const STEP_ICONS = {
   generate: Code2,
   validate: CheckCircle,
   fix: RefreshCw,
+  fidelity_review: Eye,
+  fidelity_fix: RefreshCw,
+  asset_fix: Upload,
   done: CheckCircle,
 };
 
@@ -27,6 +30,9 @@ const STEP_COLORS = {
   generate: "#6366f1",
   validate: "#22c55e",
   fix: "#f59e0b",
+  fidelity_review: "#06b6d4",
+  fidelity_fix: "#f59e0b",
+  asset_fix: "#22c55e",
   done: "#22c55e",
   error: "#ef4444",
 };

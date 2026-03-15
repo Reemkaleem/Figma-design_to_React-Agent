@@ -137,10 +137,33 @@ figma-to-react/
 ## Customization
 
 ### Change the LLM model
-In `backend/agent.py`:
-```python
-MODEL = "gpt-4o"          # Change to gpt-4-turbo, gpt-3.5-turbo, etc.
+In `backend/.env`:
+```bash
+MODEL=gpt-4o
 ```
+
+You can switch to any OpenAI-compatible model name exposed by your provider.
+
+### Tune generation quality
+In `backend/.env`:
+```bash
+# Lower temperature = more deterministic layouts
+MODEL_TEMPERATURE=0.15
+
+# Syntax/structure auto-fix rounds
+MAX_RETRIES=3
+
+# Visual fidelity refinement rounds
+MAX_FIDELITY_ROUNDS=3
+
+# Minimum target score before refinement stops
+TARGET_FIDELITY_SCORE=94
+
+# Context budget for Figma structural summary
+MAX_DESIGN_JSON_CHARS=14000
+```
+
+The agent also normalizes unreliable image paths to working demo placeholders so large media regions do not render blank in preview.
 
 ### Change the base URL (for different providers)
 ```python
@@ -150,8 +173,8 @@ GITHUB_COPILOT_BASE_URL = "https://models.inference.ai.azure.com"
 ```
 
 ### Adjust self-healing retries
-```python
-self.max_retries = 3   # In FigmaToReactAgent.__init__
+```bash
+MAX_RETRIES=3
 ```
 
 ## Troubleshooting
